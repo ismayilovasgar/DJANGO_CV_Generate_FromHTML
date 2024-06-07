@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% block page__title %} 
+ Download List Cv Page
+{% endblock page__title %}
+{% block body %}
+
+<section class="intro">
+  <div class="gradient-custom-2 h-100">
+    <div class="mask d-flex align-items-center h-100">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-10 m-5 text-center">
+            <div class="table-responsive">
+              <table class="table table-dark table-bordered mb-0">
+                <thead>
+                  <tr>
+                    <th scope="col">Profiles</th>
+                    <th scope="col">Link</th>
+                  </tr>
+                </thead>
+                <tbody>
+                    {% for user in users %}
+                  <tr >
+                    <th scope="row">
+                        {{user.firstname}}
+                    </th>
+                    <td>
+                      <a href="{% url "resume" user.id %} ">
+                        <button type="submit" class="btn btn-success">Download PDF</button>
+                      </a>                    
+                    </td>
+                  </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock body %}

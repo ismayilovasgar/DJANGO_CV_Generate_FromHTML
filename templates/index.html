@@ -1,0 +1,356 @@
+{% extends "base.html" %} 
+{% block body %}
+<div class="form-check form-switch mx-4 my-2">
+  <input
+    class="form-check-input p-2"
+    type="checkbox"
+    role="switch"
+    id="flexSwitchCheckChecked"
+    checked
+    onclick="myFunction()"
+  />
+</div>
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none">
+  <symbol id="info-fill" fill="currentColor" viewBox="0 0 16 16">
+    <path
+      d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2z"
+    />
+  </symbol>
+</svg>
+
+
+
+<section class="h-100 h-custom gradient-custom-2">
+
+  <div class="container py-5 h-100">
+    {% if messages %}
+    {% for message in messages %}
+    {% if message.tags == "success" %}    
+        <div class="alert alert-success d-flex align-items-center" role="alert">
+          <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Success:"><use xlink:href="#check-circle-fill"/></svg>
+          <div>
+          {{message}}
+          </div>
+        </div>
+    {% else %}
+        <div class="alert alert-success d-flex align-items-center" role="alert" style="visibility: hidden;">
+          <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Success:"><use xlink:href="#check-circle-fill"/></svg>
+          <div>
+            {{message}}
+          </div>
+        </div>
+    {% endif %}
+    {% endfor %}
+    {% endif %}
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-12">
+        <div
+          class="card card-registration card-registration-2"
+          style="border-radius: 15px"
+        >
+          <div class="card-body p-0">
+            <div class="row g-0">
+              {% comment %} *** {% endcomment %}
+              <form
+                action=""
+                method="POST"
+                enctype="multipart/form-data"
+                class="row g-0"
+              >
+                {% csrf_token %}
+                <div class="col-lg-6">
+                  <div class="p-5">
+                    <h3 class="fw-normal mb-5">General Infomation</h3>
+
+                    <!-- <div class="mb-4 pb-2">
+                                        <select data-mdb-select-init>
+                                            <option value="1">Title</option>
+                                            <option value="2">Two</option>
+                                            <option value="3">Three</option>
+                                            <option value="4">Four</option>
+                                        </select>
+                                    </div> -->
+
+                    <div class="row">
+                      <div class="col-md-6 mb-4 pb-2">
+                        <div data-mdb-input-init class="form-outline">
+                          <input
+                            name="firstname"
+                            type="text"
+                            id="form3Examplev2"
+                            class="form-control form-control-lg"
+                          />
+                          <label class="form-label" for="form3Examplev2"
+                            >First name</label
+                          >
+                        </div>
+                      </div>
+                      <div class="col-md-6 mb-4 pb-2">
+                        <div data-mdb-input-init class="form-outline">
+                          <input
+                            name="lastname"
+                            type="text"
+                            id="form3Examplev3"
+                            class="form-control form-control-lg"
+                          />
+                          <label class="form-label" for="form3Examplev3"
+                            >Last name</label
+                          >
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- <div class="mb-4 pb-2">
+                                        <select data-mdb-select-init>
+                                            <option value="1">Position</option>
+                                            <option value="2">Two</option>
+                                            <option value="3">Three</option>
+                                            <option value="4">Four</option>
+                                        </select>
+                                    </div> -->
+
+                    <div class="mb-4 pb-2">
+                      <div data-mdb-input-init class="form-outline">
+                        <input
+                          name="job_position"
+                          type="text"
+                          id="form3Examplev4"
+                          class="form-control form-control-lg"
+                        />
+                        <label class="form-label" for="form3Examplev4"
+                          >Position</label
+                        >
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col-md-12 mb-4 pb-2 mb-md-0 pb-md-0">
+                        <div data-mdb-input-init class="form-outline">
+                          <input
+                            name="bussines_area"
+                            type="text"
+                            id="form3Examplev5"
+                            class="form-control form-control-lg"
+                          />
+                          <label class="form-label" for="form3Examplev5"
+                            >Bussines Arena</label
+                          >
+                        </div>
+                      </div>
+                      <!-- <div class="col-md-6">
+                                            <select data-mdb-select-init>
+                                                <option value="1">Employees</option>
+                                                <option value="2">Two</option>
+                                                <option value="3">Three</option>
+                                                <option value="4">Four</option>
+                                            </select>
+                                        </div> -->
+                    </div>
+                    <!-- * -->
+                    <div class="row mt-lg-5">
+                      <div class="pb-2 form-floating">
+                        <textarea
+                          name="self_description"
+                          class="form-control"
+                          placeholder="Leave a comment here"
+                          id="floatingTextarea2"
+                          style="height: 150px"
+                        ></textarea>
+                      </div>
+                      <label for="floatingTextarea2">Self Description</label>
+                    </div>
+                    <!-- * -->
+                    <!-- * -->
+                    <div class="row mt-lg-5">
+                      <div class="pb-2 form-floating">
+                        <textarea
+                          name="job_expectation"
+                          class="form-control"
+                          placeholder="Leave a comment here"
+                          id="floatingTextarea2"
+                          style="height: 150px"
+                        ></textarea>
+                      </div>
+                      <label for="floatingTextarea2">Job Expectation</label>
+                    </div>
+                    <!-- * -->
+                  </div>
+                </div>
+                <div class="col-lg-6">
+                  <div class="p-5">
+                    <h3 class="fw-normal mb-5">Job Background</h3>
+
+                    <div class="mb-4 pb-2">
+                      <div data-mdb-input-init class="form-outline form-white">
+                        <input
+                          name="programming_lang"
+                          type="text"
+                          id="form3Examplea2"
+                          class="form-control form-control-lg"
+                        />
+                        <label class="form-label" for="form3Examplea2"
+                          >Programming Language</label
+                        >
+                      </div>
+                    </div>
+
+                    <div class="mb-4 pb-2">
+                      <div data-mdb-input-init class="form-outline form-white">
+                        <input
+                          name="last_framework"
+                          type="text"
+                          id="form3Examplea3"
+                          class="form-control form-control-lg"
+                        />
+                        <label class="form-label" for="form3Examplea3"
+                          >Frameworks</label
+                        >
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col-md-5 mb-4 pb-2">
+                        <div
+                          data-mdb-input-init
+                          class="form-outline form-white"
+                        >
+                          <input
+                            name="last_post_experience"
+                            type="text"
+                            id="form3Examplea4"
+                            class="form-control form-control-lg"
+                          />
+                          <label class="form-label" for="form3Examplea4"
+                            >Position Experince
+                          </label>
+                        </div>
+                      </div>
+                      <div class="col-md-7 mb-4 pb-2">
+                        <div
+                          data-mdb-input-init
+                          class="form-outline form-white"
+                        >
+                          <input
+                            name="last_comp_name"
+                            type="text"
+                            id="form3Examplea5"
+                            class="form-control form-control-lg"
+                          />
+                          <label class="form-label" for="form3Examplea5"
+                            >Last Company Position</label
+                          >
+                        </div>
+                      </div>
+                    </div>
+                    <h3 class="fw-normal mb-3">Contact Details</h3>
+
+                    <div class="mb-4 pb-2">
+                      <div data-mdb-input-init class="form-outline form-white">
+                        <input
+                          name="country"
+                          type="text"
+                          id="form3Examplea6"
+                          class="form-control form-control-lg"
+                        />
+                        <label class="form-label" for="form3Examplea6"
+                          >Country</label
+                        >
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col-md-5 mb-3 pb-2">
+                        <div
+                          data-mdb-input-init
+                          class="form-outline form-white"
+                        >
+                          <input
+                            name="phone_code"
+                            type="text"
+                            id="form3Examplea7"
+                            class="form-control form-control-lg"
+                          />
+                          <label class="form-label" for="form3Examplea7"
+                            >Code +</label
+                          >
+                        </div>
+                      </div>
+                      <div class="col-md-7 mb-3 pb-2">
+                        <div
+                          data-mdb-input-init
+                          class="form-outline form-white"
+                        >
+                          <input
+                            name="phone_number"
+                            type="text"
+                            id="form3Examplea8"
+                            class="form-control form-control-lg"
+                          />
+                          <label class="form-label" for="form3Examplea8"
+                            >Phone Number</label
+                          >
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="mb-3">
+                      <div data-mdb-input-init class="form-outline form-white">
+                        <input
+                          name="email"
+                          type="email"
+                          id="form3Examplea9"
+                          class="form-control form-control-lg"
+                        />
+                        <label class="form-label" for="form3Examplea9"
+                          >Your Email</label
+                        >
+                      </div>
+                    </div>
+
+                    <!-- <div class="form-check d-flex justify-content-start mb-4 pb-3">
+                                        <input class="form-check-input me-3" type="checkbox" value=""
+                                            id="form2Example3c" />
+                                        <label class="form-check-label text-white" for="form2Example3">
+                                            I do accept the <a href="#!" class="text-white"><u>Terms and
+                                                    Conditions</u></a> of your
+                                            site.
+                                        </label>
+                                    </div> -->
+
+                    <button
+                      type="Submit"
+                      data-mdb-button-init
+                      data-mdb-ripple-init
+                      class="btn btn-light btn-lg"
+                      data-mdb-ripple-color="dark"
+                    >
+                      Submit
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  function myFunction() {
+      var element = document.body;
+      element.dataset.bsTheme =
+          element.dataset.bsTheme == "dark" ? "light" : "dark";
+  }
+  function stepFunction(event) {
+      debugger;
+      var element = document.getElementsByClassName("collapse");
+      for (var i = 0; i < element.length; i++) {
+          if (element[i] !== event.target.ariaControls) {
+              element[i].classList.remove("show");
+          }
+      }
+  }
+</script>
+{% endblock body %}

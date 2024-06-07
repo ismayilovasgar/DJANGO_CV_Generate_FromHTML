@@ -1,0 +1,35 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>User CV</title>
+</head>
+
+<body>
+    <h2>{{ user_profile.firstname }}</h2>
+    <h2>{{ user_profile.lastname }}</h2>
+    <h2>{{ user_profile.job_position }}</h2>
+    <hr />
+    <br />
+    <p>Summary</p>
+    <p>{{ user_profile.bussines_area }}</p>
+    <hr />
+    <p>Skills</p>
+    <p>{{ user_profile.self_description }}</p>
+    <hr />
+    <p>Education</p>
+    <ul>
+        <li>Schooling: {{ user_profile.job_expectation }}</li>
+        <li>{{ user_profile.programming_lang }} from {{ user_profile.last_framework }}</li>
+    </ul>
+    <hr />
+    <p>Previous Work</p>
+    <p>{{ user_profile.last_post_experience }}</p>
+
+</body>
+
+</html>

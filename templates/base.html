@@ -1,0 +1,22 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'bootstrap.css' %}">
+    <title>
+        {% block page__title %}
+        Document
+        {% endblock page__title %}
+    </title>
+</head>
+<body data-bs-theme="dark">
+    {% block body %}
+    
+    {% endblock body %}
+    
+    <script src="{% static 'jquery_min.js' %}"></script>
+    <script src="{% static 'bootstrap_bundle.js' %}"></script>
+</body>
+</html>
